@@ -534,7 +534,7 @@ async def homework(message: types.message, state: FSMContext):
         except sqlite_connection.Error as error:
             print('бб, с ДБ трабл ', datetime.today(), ' ', datetime.time())
             await bot.send_message(chat_id=message.from_user.id, text='У бота возникли проблемы, для её решения'
-                                                                      ' отправь разработчику https://t.me/mirnsknight'
+                                                                      ' отправь разработчику ....'
                                                                       ' скриншот ошибки:'
                                                                       f'{error}')
 
@@ -616,7 +616,6 @@ async def callbacks_homework(call: types.CallbackQuery):
 def kb_settings():
     '''Клавиатура настроек'''
     buttons = [types.KeyboardButton('🗑Удалить аккаунт')]
-    # buttons1 = [types.KeyboardButton('⚡Автоматическое уведомление о долгах')]
     buttons2 = [types.KeyboardButton('🏫Информация о школе')]
     buttons3 = [types.KeyboardButton('👤Автор'),
                 types.KeyboardButton('↩Назад')]
@@ -670,7 +669,7 @@ async def deleting(message: types.Message, state: FSMContext):
     except sqlite_connection.Error as error:
         print('бб, с ДБ трабл ', datetime.today(), ' ', datetime.time())
         await bot.send_message(chat_id=message.from_user.id, text='У бота возникли проблемы, для её решения'
-                                                                  ' отправь разработчику https://t.me/mirnsknight'
+                                                                  ' отправь разработчику ....'
                                                                   ' скриншот ошибки:'
                                                                   f'{error}')
 
@@ -772,8 +771,7 @@ def kb_author():
 @dp.message_handler(lambda message: message.text == '👤Автор', content_types=['text'], state=Settings.menu)
 async def author(message: types.Message):
     """Меню автора"""
-    await message.answer('Мой создатель:\n<b>Ссылка на tg:</b> https://t.me/mirnsknight\n'
-                         '<b>Ссылка на ВК:</b> https://vk.com/mirnsknight', reply_markup=kb_author())
+    await message.answer('.....', reply_markup=kb_author())
 
     await Settings.author.set()
 
@@ -782,9 +780,7 @@ async def author(message: types.Message):
                     state=Settings.author)
 async def author(message: types.Message):
     '''Поддержка разработчика'''
-    await message.answer('Если тебе очень понравился данный бот, то можешь поддержать его разработчика по ссылкам:\n'
-                         '<b>Киви кошелёк:</b> https://qiwi.com/p/79090104447\n'
-                         '<b>Перевод по СБП:</b> +79090104447 (Денис Г. Тинькофф)')
+    await message.answer('....')
 
 
 @dp.message_handler(commands=['help'], state="*")
